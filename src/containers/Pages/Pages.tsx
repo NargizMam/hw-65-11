@@ -1,38 +1,19 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React from 'react';
 import Navbar from "../../components/Navbar/Navbar";
-import {ApiPagesList} from "../../types";
-import axiosApi from "../../axiosApi";
 import OnePage from "./OnePage/OnePage";
+import {ApiPagesList} from "../../types";
+import Spinner from "../../components/UI/Spinner/Spinner";
 
-const Pages = () => {
-    const [pages, setPages] = useState<ApiPagesList[]>([]);
-    const [pageName, setPageName] = useState<string[]>([]);
-    const [loading, setLoading] = useState(false);
+interface Props {
+    pages: ApiPagesList[];
+    pageName: string[];
+    loading: boolean;
+}
 
-    const fetchPages  = useCallback(async () => {
-        try {
-            setLoading(true);
-            const pagesResponse = await axiosApi.get<ApiPagesList[]>('pages.json');
-            const pages = pagesResponse.data;
-            if(!pages){
-                setPages([]);
-                return;
-            }
-            Object.keys(pagesResponse.data).map(pName => {
-                setPageName(prevState => [...prevState, pName]);
-                setPages(pagesResponse.data);
-            })
-        }finally {
-            setLoading(false);
-        }
-    },[]);
-
-    useEffect(() => {
-        fetchPages().catch(console.error);
-    }, []);
-
+const Pages:React.FC<Props> = ({pages, pageName, loading}) => {
     return (
         <div >
+            {loading ? <Spinner/> : null}
             <Navbar pageName={pageName}/>
             <section className='container'>
                 <OnePage pageList={pages}/>

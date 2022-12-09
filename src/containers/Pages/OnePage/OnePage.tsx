@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {ApiPagesList, Page} from "../../../types";
 import {useLocation, useParams} from "react-router-dom";
 import axiosApi from "../../../axiosApi";
+import Spinner from "../../../components/UI/Spinner/Spinner";
 
 interface Props {
     pageList: ApiPagesList[];
@@ -50,6 +51,7 @@ const OnePage: React.FC<Props> = ({pageList}) => {
 
     return (
         <>
+            {loading ? <Spinner/> : null}
             {pageContent}
         </>
     );
