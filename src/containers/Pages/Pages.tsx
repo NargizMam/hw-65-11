@@ -1,7 +1,8 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import Navbar from "../../components/Navbar/Navbar";
-import { ApiPagesList} from "../../types";
+import {ApiPagesList} from "../../types";
 import axiosApi from "../../axiosApi";
+import OnePage from "./OnePage/OnePage";
 
 const Pages = () => {
     const [pages, setPages] = useState<ApiPagesList[]>([]);
@@ -19,6 +20,7 @@ const Pages = () => {
             }
             Object.keys(pagesResponse.data).map(pName => {
                 setPageName(prevState => [...prevState, pName]);
+                setPages(pagesResponse.data);
             })
         }finally {
             setLoading(false);
@@ -30,10 +32,11 @@ const Pages = () => {
     }, []);
 
     return (
-        <div className='container'>
+        <div >
             <Navbar pageName={pageName}/>
-            <h4>Page title</h4>
-            <p>conTent</p>
+            <section className='container'>
+                <OnePage pageList={pages}/>
+            </section>
         </div>
     );
 };

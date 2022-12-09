@@ -23,9 +23,13 @@ const Navbar: React.FC<Props> = ({pageName}) => {
             <div className="container container-fluid">
                 <NavLink className='navbar-brand' to='/'>SCHOOL</NavLink>
                 <div className=''>
-                    <NavLink className='navbar-toggler' to='/pages'>Home</NavLink>
                     {navItem}
+                    <NavLink className='navbar-toggler'
+                             style={{textTransform: 'uppercase', marginLeft:20}}
+                             to={`/admins`}
+                    >Admin</NavLink>
                 </div>
+
             </div>
         </nav>
     );

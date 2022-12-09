@@ -5,5 +5,5 @@ export interface Page {
 }
 
 export interface ApiPagesList{
-    [od: string]: Page;
+    [id: string]: Page;
 }
