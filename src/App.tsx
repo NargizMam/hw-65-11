@@ -1,8 +1,6 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {Route, Routes} from "react-router-dom";
 import Pages from "./containers/Pages/Pages";
-import EditPage from "./containers/EditPage/EditPage";
-import NewPage from "./containers/NewPage/NewPage";
 import Admin from "./containers/Admin/Admin";
 import axiosApi from "./axiosApi";
 import {ApiPagesList} from "./types";
@@ -41,8 +39,6 @@ function App() {
           />}/>
           <Route path='/pages/:id' element={<Pages loading ={loading} pages={pages} pageName={pageName}/>}/>
           <Route path='/admins' element={(<Admin loading ={loading} pageName={pageName}/>)} />
-          <Route path='/pages/edit/:id' element={<EditPage/>}/>
-          <Route path='/create-page' element={<NewPage/>}/>
         </Routes>
     </div>
   );

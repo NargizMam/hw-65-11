@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import './AdminsPage.css';
 import axiosApi from "../../axiosApi";
 import {Page} from "../../types";
 import {useNavigate} from "react-router-dom";

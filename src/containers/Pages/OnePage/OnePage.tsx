@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {ApiPagesList, Page} from "../../../types";
-import {useLocation, useParams} from "react-router-dom";
+import {useLocation} from "react-router-dom";
 import axiosApi from "../../../axiosApi";
 import Spinner from "../../../components/UI/Spinner/Spinner";
 
